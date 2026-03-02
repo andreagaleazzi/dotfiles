@@ -1,0 +1,1236 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Map Left Command alone to Alt+Spacebar",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "left_command",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "left_command" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Caps Lock to Esc and Ctrl",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "right_control" }],
+                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Wrap selected text in \\replaced{}{} using Cmd+Shift+R",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": ["command", "shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "x",
+                                        "modifiers": ["command"]
+                                    },
+                                    { "key_code": "backslash" },
+                                    { "key_code": "r" },
+                                    { "key_code": "e" },
+                                    { "key_code": "p" },
+                                    { "key_code": "l" },
+                                    { "key_code": "a" },
+                                    { "key_code": "c" },
+                                    { "key_code": "e" },
+                                    { "key_code": "d" },
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["command"]
+                                    },
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Wrap selected text in \\added{} using Cmd+Shift+A",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": {
+                                        "mandatory": ["command", "shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    { "key_code": "backslash" },
+                                    { "key_code": "a" },
+                                    { "key_code": "d" },
+                                    { "key_code": "d" },
+                                    { "key_code": "e" },
+                                    { "key_code": "d" },
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    { "key_code": "left_arrow" }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Wrap selected text in \\deleted{} using Cmd+Shift+D",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": ["command", "shift"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "x",
+                                        "modifiers": ["command"]
+                                    },
+                                    { "key_code": "backslash" },
+                                    { "key_code": "d" },
+                                    { "key_code": "e" },
+                                    { "key_code": "l" },
+                                    { "key_code": "e" },
+                                    { "key_code": "t" },
+                                    { "key_code": "e" },
+                                    { "key_code": "d" },
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    },
+                                    {
+                                        "key_code": "v",
+                                        "modifiers": ["command"]
+                                    },
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "command-f1 and f2 to adjust keyboard brightness",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": ["left_command"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "illumination_decrement" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f2",
+                                    "modifiers": {
+                                        "mandatory": ["left_command"],
+                                        "optional": ["caps_lock"]
+                                    }
+                                },
+                                "to": [{ "key_code": "illumination_increment" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Use F2 as Rename",
+                        "enabled": false,
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.finder"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "f2" },
+                                "to": [{ "key_code": "return_or_enter" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Use Fn+Delete as Move to Trash",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com.apple.finder"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "delete_forward",
+                                    "modifiers": { "mandatory": ["fn"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["left_command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Mac OSX: disable cmd + h to prevent minimising an application window",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["command"] }
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Mac OSX: disable cmd + option + h + m to prevent minimising all windows",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["command", "option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["command", "option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Mac OSX: Use Function Keys in Supported Apps, else use Media Keys",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "display_brightness_decrement" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f1" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f2",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "display_brightness_increment" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f2",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f2" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "mission_control" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f3" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f4" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f5",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f5" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f6",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f6" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f7",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "rewind" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f7",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f7" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f8",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "play_or_pause" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f8",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f8" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f9",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "fastforward" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f9",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f9" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f10",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "mute" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f10",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f10" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f11",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "volume_decrement" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f11",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f11" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "volume_increment" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.microsoft\\.VSCode$",
+                                            "^com\\.microsoft\\.VSCodeInsiders",
+                                            "^com\\.jetbrains\\.goland$",
+                                            "^com\\.jetbrains\\.rider$",
+                                            "^com\\.jetbrains\\.pycharm$",
+                                            "^com\\.jetbrains\\.pycharm.ce$",
+                                            "^com\\.jetbrains\\.intellij$",
+                                            "^com\\.jetbrains\\.intellij.ce$",
+                                            "^com\\.jetbrains\\.PhpStorm$",
+                                            "^com\\.jetbrains\\.CLion$",
+                                            "^com\\.jetbrains\\.WebStorm$",
+                                            "^com\\.jetbrains\\.rubymine$",
+                                            "^com\\.jetbrains\\.datagrip$",
+                                            "^com\\.jetbrains\\.rustrover-EAP$",
+                                            "^com\\.jetbrains\\.rustrover$",
+                                            "^org\\.eclipse\\.platform\\.ide$",
+                                            "^com\\.apple\\.dt\\.Xcode$",
+                                            "^com\\.googlecode\\.iterm2$",
+                                            "^com\\.apple\\.Terminal$",
+                                            "^com\\.adobe\\.Photoshop$",
+                                            "^com\\.adobe\\.PremierePro.23$",
+                                            "^com\\.adobe\\.PremierePro.24$",
+                                            "^com\\.adobe\\.illustrator$",
+                                            "^com\\.adobe\\.Audition$",
+                                            "^com\\.adobe\\.AfterEffects$",
+                                            "^com\\.blackmagic-design\\.DaVinciResolve$",
+                                            "^com\\.macromates\\.TextMate$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "key_code": "f12" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "(Remote Desktop) Left control to left command",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com\\.microsoft\\.rdc\\.mac",
+                                            "com\\.ericom\\.blazeclient"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "left_control" },
+                                "to": [{ "key_code": "left_command" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "(Remote Desktop) Left command to left control",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "com\\.microsoft\\.rdc\\.mac",
+                                            "com\\.ericom\\.blazeclient"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": { "key_code": "left_command" },
+                                "to": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "print_screen" }]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": {
+                "country_code": 0,
+                "keyboard_type_v2": "ansi"
+            }
+        }
+    ]
+}

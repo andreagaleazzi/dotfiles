@@ -1,0 +1,58 @@
+# --- Basics / PATHs ---------------------------------------------------------
+# If coming from bash you might need:
+# export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
+# Homebrew (uncomment the one that applies if you don't already load shellenv elsewhere)
+# eval "$(/opt/homebrew/bin/brew shellenv)"   # Apple Silicon
+# eval "$(/usr/local/bin/brew shellenv)"      # Intel
+
+# LM Studio CLI
+export PATH="$PATH:$HOME/.lmstudio/bin"
+
+# --- Oh My Zsh --------------------------------------------------------------
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=""                           # Let Starship handle the prompt
+plugins=(git fast-syntax-highlighting) # add more if you like
+source "$ZSH/oh-my-zsh.sh"
+
+# Completions / suggestions — pick ONE of the following, not both:
+# 1) Lightweight inline suggestions:
+source "$(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+# 2) Rich completion UI (if you prefer this, comment the autosuggestions line above):
+# source "$(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+
+# --- Utilities --------------------------------------------------------------
+# Yazi: cd into the directory you quit into
+y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  IFS= read -r -d '' cwd < "$tmp"
+  [[ -n "$cwd" && "$cwd" != "$PWD" ]] && builtin cd -- "$cwd"
+  rm -f -- "$tmp"
+}
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2>/dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/opt/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/opt/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/opt/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# zoxide (smart cd) — before starship, after OMZ
+eval "$(zoxide init zsh)"
+
+# Starship prompt — keep LAST so it overrides everything else
+eval "$(starship init zsh)"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/andrea/.lmstudio/bin"
+# End of LM Studio CLI section
+
